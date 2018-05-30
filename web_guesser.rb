@@ -1,12 +1,13 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
-
-# number = rand(101)
-
+#rand number before get request established
 NUMBER = rand(100)
+
 get '/' do
+
 #erb :index, :locals => {:number => number,:message => 'Guess the number'}
+
 def check_guess(number)
 
   guess = params["guess"].to_i
@@ -28,4 +29,9 @@ elsif guess == number
 end
 end
 check_guess(NUMBER)
+end
+
+#cheat mode 
+get '/guess=56&cheat=true' do
+  "The number is #{NUMBER}"
 end
